@@ -137,7 +137,7 @@ panel.style.transform = prefersReducedMotion ? 'scale(1)' : 'scale(0.75)';
         firstSlide.after(newSlide);
     });
 })();
-
+/*
 // INFINITE GALLERY - 3. ANIMATION
 const track = document.querySelector('.slide-track');
 const slides = document.querySelectorAll('.slide img');
@@ -176,4 +176,4 @@ if (!prefersReducedMotion) {
         img.style.transform = 'none';
         img.style.transition = 'none';
     });
-}
+}*/
