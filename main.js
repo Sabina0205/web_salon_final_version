@@ -46,28 +46,42 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener("DOMContentLoaded", () => {
     const aboutEls = document.querySelectorAll(".about-scroll");
 
+    if (!aboutEls.length) return;
+
+    if (prefersReducedMotion) {
+        aboutEls.forEach(el => {
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+            el.style.transition = "none";
+        });
+        return;
+    }
+
     aboutEls.forEach(el => {
-        el.style.opacity = prefersReducedMotion ? 1 : 0;
-        el.style.transform = prefersReducedMotion ? "translateY(0)" : "translateY(40px)";
-        if (!prefersReducedMotion) {
-            el.style.transition = "opacity 1s ease-out, transform 1s ease-out";
-        }
+        el.style.opacity = "0";
+        el.style.transform = "translateY(40px)";
+        el.style.transition = "opacity 0.8s ease-out, transform 0.8s ease-out";
+        el.style.willChange = "opacity, transform";
     });
 
-    if (!prefersReducedMotion) {
-        function revealOnScroll() {
-            const windowHeight = window.innerHeight;
-            aboutEls.forEach(el => {
-                const rect = el.getBoundingClientRect();
-                const visible = rect.top < windowHeight * 0.8 && rect.bottom > windowHeight * 0.3;
-                el.style.opacity = visible ? 1 : 0;
-                el.style.transform = visible ? "translateY(0)" : "translateY(40px)";
-            });
-        }
-        window.addEventListener("scroll", revealOnScroll);
-        revealOnScroll();
-    }
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+            entry.target.style.willChange = "auto";
+
+            obs.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.2,
+        rootMargin: "0px 0px -10% 0px"
+    });
+
+    aboutEls.forEach(el => observer.observe(el));
 });
+
 
 // SERVICES PHOTO CHANGE
 document.addEventListener("DOMContentLoaded", () => {
