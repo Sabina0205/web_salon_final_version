@@ -30,24 +30,6 @@ dropdownLinks.forEach((link) => {
     });
 });
 
-// HERO ANIMATION - 1.animation
-document.addEventListener("DOMContentLoaded", () => {
-    const fadeUpEls = document.querySelectorAll(".fade-up");
-    fadeUpEls.forEach((el, index) => {
-        el.style.opacity = prefersReducedMotion ? 1 : 0;
-        el.style.transform = prefersReducedMotion ? "translateY(0)" : "translateY(16px)";
-        if (!prefersReducedMotion) {
-            requestAnimationFrame(() => {
-                setTimeout(() => {
-                    el.style.transition = "opacity 1s ease-out, transform 1s ease-out";
-                    el.style.opacity = 1;
-                    el.style.transform = "translateY(0)";
-                }, index * 300);
-            });
-        }
-    });
-});
-
 // YEAR OF WORK
 document.addEventListener('DOMContentLoaded', () => {
     const startYear = 2016;
@@ -193,77 +175,5 @@ if (!prefersReducedMotion) {
     slides.forEach(img => {
         img.style.transform = 'none';
         img.style.transition = 'none';
-    });
-}
-
-// HOVER - 4. ANIMATION
-if (!prefersReducedMotion) {
-    document.addEventListener('DOMContentLoaded', () => {
-        // CLOSE-HOVER
-        document.querySelectorAll('.close-hover').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                el.style.color = '#ef4444';
-            });
-            el.addEventListener('mouseleave', () => {
-                el.style.color = '';
-            });
-        });
-        // HERO-ICON-HOVER
-        document.querySelectorAll('.hero-icon-hover').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                el.style.transform = 'scale(1.1)';
-            });
-            el.addEventListener('mouseleave', () => {
-                el.style.color = '';
-                el.style.transform = 'scale(1)';
-            });
-        });
-        // NAV-HOVER
-        document.querySelectorAll('.nav-hover').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                el.style.color = '#f472b6';
-            });
-            el.addEventListener('mouseleave', () => {
-                el.style.color = '';
-            });
-        });
-        // PAW-HOVER
-        document.querySelectorAll('.paw-hover').forEach(el => {
-            el.style.cursor = 'pointer';
-            el.addEventListener('mouseenter', () => {
-                el.style.transform = 'scale(1.25)';
-            });
-            el.addEventListener('mouseleave', () => {
-                el.style.transform = 'scale(1)';
-            });
-        });
-        // FOOTER-ICON-HOVER
-        document.querySelectorAll('.footer-icon-hover').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                el.style.backgroundColor = 'rgba(236,72,153,0.8)';
-                el.style.borderColor = 'rgba(255,255,255,0.5)';
-                el.style.color = 'rgba(255,255,255,0.9)';
-                el.style.transform = 'scale(1.1)';
-            });
-            el.addEventListener('mouseleave', () => {
-                el.style.backgroundColor = '';
-                el.style.borderColor = '';
-                el.style.color = '';
-                el.style.transform = 'scale(1)';
-            });
-        });
-        // PHONE-CONTACT-HOVER
-        document.querySelectorAll('.phone-contact-hover').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                el.style.color = '#3b82f6';
-            });
-            el.addEventListener('mouseleave', () => {
-                el.style.color = '';
-            });
-        });
-    });
-} else {
-    document.querySelectorAll('.hero-icon-hover, .paw-hover, .footer-icon-hover').forEach(el => {
-        el.style.transform = 'none';
     });
 }

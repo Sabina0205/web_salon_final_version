@@ -1,97 +1,129 @@
 @font-face {
-font-family: 'Sour Gummy';
-src: url('./fonts/sour-gummy-v3-latin_latin-ext-500.woff2') format('woff2');
-font-weight: 400;
-font-display: optional;
-font-style: normal;
+    font-family: 'Sour Gummy';
+    src: url('./fonts/sour-gummy-v3-latin_latin-ext-500.woff2') format('woff2');
+    font-weight: 400;
+    font-display: optional;
+    font-style: normal;
 }
+
 @font-face {
-font-family: 'Sour Gummy';
-src: url('./fonts/sour-gummy-v3-latin_latin-ext-700.woff2') format('woff2');
-font-weight: 700;
-font-display: optional;
-font-style: normal;
+    font-family: 'Sour Gummy';
+    src: url('./fonts/sour-gummy-v3-latin_latin-ext-700.woff2') format('woff2');
+    font-weight: 700;
+    font-display: optional;
+    font-style: normal;
 }
+
 @layer base {
-body {
-font-family: 'Sour Gummy', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+    body {
+        font-family: 'Sour Gummy', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 }
 
 @import "tailwindcss";
 
 @theme {
---breakpoint-3xl: 118.75rem;
+    --breakpoint-3xl: 118.75rem;
 }
 
 @layer utilities {
-.hero-bg {
-/* FALLBACK */
-background-image: url('./images/hero_mobile_800x1200.jpg');
+    .nav-hover {
+        @apply hover:text-pink-400 transition-colors duration-300;
+    }
 
-background-image: -webkit-image-set(url('./images/hero_mobile_800x1200.webp') 1x,
-url('./images/hero_mobile_800x1200.jpg') 1x);
-background-image: image-set(url('./images/hero_mobile_800x1200.webp') 1x,
-url('./images/hero_mobile_800x1200.jpg') 1x);
+    .hero-icon-hover {
+        @apply hover:scale-110 transition-transform duration-300;
+    }
 
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
+    .hero-bg {
+        /* FALLBACK */
+        background-image: url('./images/hero_mobile_800x1200.jpg');
+
+        background-image: -webkit-image-set(url('./images/hero_mobile_800x1200.webp') 1x,
+                url('./images/hero_mobile_800x1200.jpg') 1x);
+        background-image: image-set(url('./images/hero_mobile_800x1200.webp') 1x,
+                url('./images/hero_mobile_800x1200.jpg') 1x);
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .footer-bg {
+        /* FALLBACK */
+        background-image: url('./images/footer_mobile_800x450.jpg');
+        background-image: -webkit-image-set(url('./images/footer_mobile_800x450.webp') 1x,
+                url('./images/footer_mobile_800x450.jpg') 1x);
+        background-image: image-set(url('./images/footer_mobile_800x450.webp') 1x,
+                url('./images/footer_mobile_800x450.jpg') 1x);
+
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    @media (min-width: 768px) {
+        .hero-bg {
+            background-image: url('./images/hero_desktop_1920x1200.jpg');
+
+            background-image: -webkit-image-set(url('./images/hero_desktop_1920x1200.webp') 1x,
+                    url('./images/hero_desktop_1920x1200.jpg') 1x);
+            background-image: image-set(url('./images/hero_desktop_1920x1200.webp') 1x,
+                    url('./images/hero_desktop_1920x1200.jpg') 1x);
+        }
+
+        .footer-bg {
+            /* FALLBACK */
+            background-image: url('./images/footer_desktop_1920x450.jpg');
+            background-image: -webkit-image-set(url('./images/footer_desktop_1920x450.webp') 1x,
+                    url('./images/footer_desktop_1920x450.jpg') 1x);
+            background-image: image-set(url('./images/footer_desktop_1920x450.webp') 1x,
+                    url('./images/footer_desktop_1920x450.jpg') 1x);
+        }
+    }
 }
 
-.footer-bg {
-/* FALLBACK */
-background-image: url('./images/footer_mobile_800x450.jpg');
-background-image: -webkit-image-set(url('./images/footer_mobile_800x450.webp') 1x,
-url('./images/footer_mobile_800x450.jpg') 1x);
-background-image: image-set(url('./images/footer_mobile_800x450.webp') 1x,
-url('./images/footer_mobile_800x450.jpg') 1x);
+/* HERO */
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
 
-background-size: cover;
-background-position: center;
-background-repeat: no-repeat;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-@media (min-width: 768px) {
-.hero-bg {
-background-image: url('./images/hero_desktop_1920x1200.jpg');
-
-background-image: -webkit-image-set(url('./images/hero_desktop_1920x1200.webp') 1x,
-url('./images/hero_desktop_1920x1200.jpg') 1x);
-background-image: image-set(url('./images/hero_desktop_1920x1200.webp') 1x,
-url('./images/hero_desktop_1920x1200.jpg') 1x);
-}
-
-.footer-bg {
-/* FALLBACK */
-background-image: url('./images/footer_desktop_1920x450.jpg');
-background-image: -webkit-image-set(url('./images/footer_desktop_1920x450.webp') 1x,
-url('./images/footer_desktop_1920x450.jpg') 1x);
-background-image: image-set(url('./images/footer_desktop_1920x450.webp') 1x,
-url('./images/footer_desktop_1920x450.jpg') 1x);
-}
-}
+.fade-up {
+    opacity: 0;
+    animation: fade-up 1s ease-out forwards;
 }
 
 /* PRICE SECTION*/
 .paw {
-@apply w-28 sm:w-36 md:w-25 lg:w-32 xl:w-40 3xl:w-48 h-auto mx-auto pt-8;
+    @apply w-28 sm:w-36 md:w-25 lg:w-32 xl:w-40 3xl:w-48 h-auto mx-auto pt-8;
+}
+
+.paw-hover:hover {
+    @apply cursor-pointer scale-120 transition-transform duration-500;
 }
 
 .paw p {
-@apply pt-5 text-xl px-2 xl:text-2xl;
+    @apply pt-5 text-xl px-2 xl:text-2xl;
 }
 
 .content {
-@apply hidden;
+    @apply hidden;
 }
 
 .content div {
-@apply pt-6;
+    @apply pt-6;
 }
 
 .title {
-@apply text-5xl md:text-6xl font-bold text-center mb-12 text-shadow-xs text-shadow-sky-100/60;
+    @apply text-5xl md:text-6xl font-bold text-center mb-12 text-shadow-xs text-shadow-sky-100/60;
 }
 
 
@@ -102,62 +134,189 @@ url('./images/footer_desktop_1920x450.jpg') 1x);
 #l:checked~.overlay,
 #xl:checked~.overlay,
 #xxl:checked~.overlay {
-opacity: 1;
-pointer-events: auto;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 #s:checked~.overlay .content-s {
-display: block;
+    display: block;
 }
 
 #m:checked~.overlay .content-m {
-display: block;
+    display: block;
 }
 
 #l:checked~.overlay .content-l {
-display: block;
+    display: block;
 }
 
 #xl:checked~.overlay .content-xl {
-display: block;
+    display: block;
 }
 
 #xxl:checked~.overlay .content-xxl {
-display: block;
+    display: block;
 }
+
 
 /*GALLERY*/
 
 #galeria {
-@apply overflow-hidden;
+    @apply overflow-hidden;
 }
 
 .slider {
-@apply relative mx-auto overflow-hidden py-15 md:pt-20;
+    @apply relative mx-auto overflow-hidden py-15 md:pt-20;
 }
 
 .slide-track {
-@apply flex w-max items-stretch;
+    @apply flex w-max items-stretch;
 }
 
 .slide {
-@apply shrink-0 w-35 sm:w-50 md:w-87.5 aspect-[4/5] p-3 md:p-4;
+    @apply shrink-0 w-35 sm:w-50 md:w-87.5 aspect-[4/5] p-3 md:p-4;
 }
 
 .slide img {
-@apply block w-full h-full object-cover rounded-xl;
+    @apply block w-full h-full object-cover rounded-xl;
+}
+
+.slide img:hover {
+    @apply scale-110 duration-500 transition-transform;
 }
 
 .slider::before,
 .slider::after {
-content: '';
-@apply absolute top-0 h-full w-[15%] z-20 pointer-events-none;
+    content: '';
+    @apply absolute top-0 h-full w-[15%] z-20 pointer-events-none;
 }
 
 .slider::before {
-@apply left-0 bg-linear-to-r from-white/60 to-transparent;
+    @apply left-0 bg-linear-to-r from-white/60 to-transparent;
 }
 
 .slider::after {
-@apply right-0 bg-linear-to-l from-white/60 to-transparent;
+    @apply right-0 bg-linear-to-l from-white/60 to-transparent;
+}
+
+/* CONTACT */
+.phone-contact-hover:hover {
+    color: #3b82f6;
+    transition: color 0.3s;
+}
+
+/* FOOTER */
+.footer-icon-hover:hover {
+    @apply bg-pink-500/80 border-white/50 text-white/90 scale-110 transition-all duration-500;
+}
+
+/* ANIMATIONS */
+
+/* HERO */
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-up {
+    opacity: 0;
+    animation: fade-up 1s ease-out forwards;
+}
+
+/* NAV hover */
+.nav-hover.hover-temp {
+    color: #f472b6;
+    /* rovnako ako hover:text-pink-400 */
+    transition: color 0.3s;
+}
+
+/* HERO ICON hover */
+.hero-icon-hover.hover-temp {
+    transform: scale(1.1);
+    transition: transform 0.3s;
+}
+
+/* PAW hover */
+.paw-hover.hover-temp {
+    transform: scale(1.20);
+    cursor: pointer;
+    transition: transform 0.5s;
+}
+
+/* FOOTER ICON hover */
+.footer-icon-hover.hover-temp {
+    background-color: rgba(236, 72, 153, 0.8);
+    border-color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.9);
+    transform: scale(1.1);
+    transition: all 0.5s;
+}
+
+/* PHONE CONTACT hover */
+.phone-contact-hover.hover-temp {
+    color: #3b82f6;
+    transition: color 0.3s;
+}
+
+.slide img.hover-temp {
+    transform: scale(1.1);
+    transition: transform 0.5s;
+}
+
+.slide-track.hover-temp {
+    animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    /* ÚPLNÉ VYPNUTIE HOVER EFEKTOV */
+    .nav-hover,
+    .hero-icon-hover,
+    .paw-hover,
+    .footer-icon-hover,
+    .phone-contact-hover,
+    .slide img,
+    .slide-track,
+    .panel,
+    [class*="hover"] {
+        pointer-events: none !important;
+    }
+
+    /* Špecifické classy z tvojho CSS */
+    .nav-hover.hover-temp,
+    .hero-icon-hover.hover-temp,
+    .paw-hover.hover-temp,
+    .footer-icon-hover.hover-temp,
+    .slide-track.hover-temp {
+        pointer-events: none !important;
+    }
+
+    /* Ostatné */
+    .slide-track {
+        animation: none !important;
+    }
+
+    .panel {
+        transform: scale(1) !important;
+    }
+
+    .fade-up {
+        opacity: 1 !important;
+    }
 }
