@@ -1,0 +1,163 @@
+@font-face {
+font-family: 'Sour Gummy';
+src: url('./fonts/sour-gummy-v3-latin_latin-ext-500.woff2') format('woff2');
+font-weight: 400;
+font-display: optional;
+font-style: normal;
+}
+@font-face {
+font-family: 'Sour Gummy';
+src: url('./fonts/sour-gummy-v3-latin_latin-ext-700.woff2') format('woff2');
+font-weight: 700;
+font-display: optional;
+font-style: normal;
+}
+@layer base {
+body {
+font-family: 'Sour Gummy', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+}
+
+@import "tailwindcss";
+
+@theme {
+--breakpoint-3xl: 118.75rem;
+}
+
+@layer utilities {
+.hero-bg {
+/* FALLBACK */
+background-image: url('./images/hero_mobile_800x1200.jpg');
+
+background-image: -webkit-image-set(url('./images/hero_mobile_800x1200.webp') 1x,
+url('./images/hero_mobile_800x1200.jpg') 1x);
+background-image: image-set(url('./images/hero_mobile_800x1200.webp') 1x,
+url('./images/hero_mobile_800x1200.jpg') 1x);
+
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+
+.footer-bg {
+/* FALLBACK */
+background-image: url('./images/footer_mobile_800x450.jpg');
+background-image: -webkit-image-set(url('./images/footer_mobile_800x450.webp') 1x,
+url('./images/footer_mobile_800x450.jpg') 1x);
+background-image: image-set(url('./images/footer_mobile_800x450.webp') 1x,
+url('./images/footer_mobile_800x450.jpg') 1x);
+
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+}
+
+@media (min-width: 768px) {
+.hero-bg {
+background-image: url('./images/hero_desktop_1920x1200.jpg');
+
+background-image: -webkit-image-set(url('./images/hero_desktop_1920x1200.webp') 1x,
+url('./images/hero_desktop_1920x1200.jpg') 1x);
+background-image: image-set(url('./images/hero_desktop_1920x1200.webp') 1x,
+url('./images/hero_desktop_1920x1200.jpg') 1x);
+}
+
+.footer-bg {
+/* FALLBACK */
+background-image: url('./images/footer_desktop_1920x450.jpg');
+background-image: -webkit-image-set(url('./images/footer_desktop_1920x450.webp') 1x,
+url('./images/footer_desktop_1920x450.jpg') 1x);
+background-image: image-set(url('./images/footer_desktop_1920x450.webp') 1x,
+url('./images/footer_desktop_1920x450.jpg') 1x);
+}
+}
+}
+
+/* PRICE SECTION*/
+.paw {
+@apply w-28 sm:w-36 md:w-25 lg:w-32 xl:w-40 3xl:w-48 h-auto mx-auto pt-8;
+}
+
+.paw p {
+@apply pt-5 text-xl px-2 xl:text-2xl;
+}
+
+.content {
+@apply hidden;
+}
+
+.content div {
+@apply pt-6;
+}
+
+.title {
+@apply text-5xl md:text-6xl font-bold text-center mb-12 text-shadow-xs text-shadow-sky-100/60;
+}
+
+
+/* UNWRAPP OF PRICES */
+
+#s:checked~.overlay,
+#m:checked~.overlay,
+#l:checked~.overlay,
+#xl:checked~.overlay,
+#xxl:checked~.overlay {
+opacity: 1;
+pointer-events: auto;
+}
+
+#s:checked~.overlay .content-s {
+display: block;
+}
+
+#m:checked~.overlay .content-m {
+display: block;
+}
+
+#l:checked~.overlay .content-l {
+display: block;
+}
+
+#xl:checked~.overlay .content-xl {
+display: block;
+}
+
+#xxl:checked~.overlay .content-xxl {
+display: block;
+}
+
+/*GALLERY*/
+
+#galeria {
+@apply overflow-hidden;
+}
+
+.slider {
+@apply relative mx-auto overflow-hidden py-15 md:pt-20;
+}
+
+.slide-track {
+@apply flex w-max items-stretch;
+}
+
+.slide {
+@apply shrink-0 w-35 sm:w-50 md:w-87.5 aspect-[4/5] p-3 md:p-4;
+}
+
+.slide img {
+@apply block w-full h-full object-cover rounded-xl;
+}
+
+.slider::before,
+.slider::after {
+content: '';
+@apply absolute top-0 h-full w-[15%] z-20 pointer-events-none;
+}
+
+.slider::before {
+@apply left-0 bg-linear-to-r from-white/60 to-transparent;
+}
+
+.slider::after {
+@apply right-0 bg-linear-to-l from-white/60 to-transparent;
+}
