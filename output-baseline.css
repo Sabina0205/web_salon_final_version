@@ -441,6 +441,12 @@
   .max-h-64 {
     max-height: calc(var(--spacing) * 64);
   }
+  .max-h-70 {
+    max-height: calc(var(--spacing) * 70);
+  }
+  .max-h-80 {
+    max-height: calc(var(--spacing) * 80);
+  }
   .min-h-\[80vh\] {
     min-height: 80vh;
   }
@@ -1068,6 +1074,11 @@
   .sm\:max-h-72 {
     @media (width >= 40rem) {
       max-height: calc(var(--spacing) * 72);
+    }
+  }
+  .sm\:max-h-100 {
+    @media (width >= 40rem) {
+      max-height: calc(var(--spacing) * 100);
     }
   }
   .sm\:w-10 {
