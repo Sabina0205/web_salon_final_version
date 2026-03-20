@@ -11,7 +11,7 @@
     "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch",
     "dev:baseline": "npx @tailwindcss/cli -i ./input-baseline.css -o ./output-baseline.css --watch",
     "build": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css",
-    "build:baseline": "npx tailwindcss -i ./src/input-baseline.css -o ./dist/output-baseline.min.css --minify --content './baseline.html'",
+    "build:baseline": "npx tailwindcss -i ./input-baseline.css -o ./output-baseline.css --minify --content './index.html'",
     "prettier": "npx prettier --write src/**/*.html"
   },
   "prettier": {
